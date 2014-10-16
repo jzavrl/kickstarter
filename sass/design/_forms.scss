@@ -1,0 +1,42 @@
+.form-item {
+	margin: 1rem 0;
+}
+
+label {
+
+}
+
+input[type=text],
+input[type=email],
+input[type=password],
+textarea {
+
+
+	&:focus {
+
+	}
+}
+
+input[type=radio] {
+
+}
+
+input[type=checkbox] {
+
+}
+
+select {
+
+
+	&:hover {
+
+	}
+}
+
+input[type=submit] {
+
+
+	&:hover {
+
+	}
+}

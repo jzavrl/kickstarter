@@ -1,0 +1,38 @@
+////////////////////////
+// Mixins Partials
+//
+// All of your mixins should go in this file.
+////////////////////////
+
+// Image for retina
+@mixin image-2x ($image, $width, $height) {
+  @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 1.5dppx) {
+    background-image: url($image);
+    background-size: $width $height;
+  }
+}
+
+// Calc function with prefixes
+@mixin calc ($property, $expression) {
+  #{$property}: calc(#{$expression});
+}
+
+// Placeholder color
+@mixin placeholder ($color, $opacity: 1) {
+  &::-webkit-input-placeholder {
+    color: $color;
+    opacity: $opacity;
+  }
+  &:-moz-placeholder {
+    color: $color;
+    opacity: $opacity;
+  }
+  &::-moz-placeholder {
+    color: $color;
+    opacity: $opacity;
+  }
+  &:-ms-input-placeholder {
+    color: $color;
+    opacity: $opacity;
+  }
+}

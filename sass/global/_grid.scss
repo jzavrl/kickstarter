@@ -1,0 +1,149 @@
+////////////////////////
+// Grid Settings
+//
+// The whole output and settings of the grid can be modified using these variables
+////////////////////////
+
+
+// Basic settings
+$grid-unit: px;
+$grid-width: 1200px;
+$grid-columns: 12;
+$grid-gutter: 30px;
+
+
+// Wether or not to generate classes
+$grid-generate: true;
+
+// Classes names and prefixes
+$grid-container-name: 'container';
+$grid-row-name: 'row';
+$grid-column-name: 'col-';
+$grid-pull-prefix: 'pull-';
+$grid-push-prefix: 'push-';
+$grid-offset-prefix: 'offset-';
+
+// Breakpoints and names for classes
+$grid-breakpoints: (
+	xs: 0,
+	sm: 768,
+	md: 992,
+	lg: 1200,
+);
+
+////////////////////////
+// Grid Mixins
+//
+// Mixins providing the output for the grid, can be used separately
+////////////////////////
+
+
+// Create media breakpoints for the output
+@mixin grid-respond ($width) {
+	@if $width == 0 {
+		@content;
+	} @else {
+		@media (min-width: #{$width}#{$grid-unit}) {
+			@content;
+		}
+	}
+}
+
+// Main container setting the width
+@mixin grid-container ($gutter: $grid-gutter) {
+	margin-right: auto;
+	margin-left: auto;
+	padding-left: $gutter / 2;
+	padding-right: $gutter / 2;
+
+	@each $key, $value in $grid-breakpoints {
+		@include grid-respond($value) {
+			width: $value - $gutter;
+		}
+	}
+}
+
+// Row holding the columns
+@mixin grid-row ($gutter: $grid-gutter) {
+	margin-left: $gutter / 2;
+	margin-right: $gutter / 2;
+	@include grid-clearfix;
+}
+
+// Columns
+@mixin grid-column ($column, $gutter: $grid-gutter) {
+	float: left;
+	min-height: 1px;
+	padding-left: $gutter / 2;
+	padding-right: $gutter / 2;
+	position: relative;
+	width: (100% / $grid-columns) * $column;
+	@include grid-clearfix;
+}
+
+// Pulls columns
+@mixin grid-pull ($column) {
+	right: (100% / $grid-columns) * $column;
+}
+
+// Pushes columns
+@mixin grid-push ($column) {
+	left: (100% / $grid-columns) * $column;
+}
+
+// Offsets columns
+@mixin grid-offset ($column) {
+	margin-left: (100% / $grid-columns) * $column;
+}
+
+// Clearfix for the container and row
+@mixin grid-clearfix {
+	&:after {
+		content: " ";
+		display: block;
+		clear: both;
+	}
+}
+
+////////////////////////
+// Grid Classes
+//
+// If $grid-generate is set to true this will generate classes for the grid so you can use them in the markup
+////////////////////////
+
+
+@if $grid-generate {
+
+	// Container class
+	.#{$grid-container-name} {
+		@include grid-container;
+	}
+
+	// Row class
+	.#{$grid-row-name} {
+		@include grid-row;
+	}
+
+	// Columns classes
+	@each $key, $value in $grid-breakpoints {
+		$column: $grid-columns;
+		@include grid-respond($value) {
+			@while $column > 0 {
+				.#{$grid-column-name}#{$key}-#{$column} {
+					@include grid-column($column);
+				}
+				.#{$grid-column-name}#{$key}-#{$grid-pull-prefix}#{$grid-columns} {
+					@include grid-pull($grid-columns);
+				}
+				.#{$grid-column-name}#{$key}-#{$grid-push-prefix}#{$grid-columns} {
+					@include grid-push($grid-columns);
+				}
+				.#{$grid-column-name}#{$key}-#{$grid-offset-prefix}#{$grid-columns} {
+					@include grid-offset($grid-columns);
+				}
+				$column: $column - 1;
+			}
+		}
+	}
+
+}

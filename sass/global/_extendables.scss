@@ -1,0 +1,48 @@
+////////////////////////
+// Extendables Partials
+//
+// All of your extendable classes, ids, and placeholder extendables should go in this file.
+////////////////////////
+
+.text-center {
+	text-align: center;
+}
+
+.text-left {
+	text-align: left;
+}
+
+.text-right {
+	text-align: right;
+}
+
+.uppercase {
+	text-transform: uppercase;
+}
+
+.pull-left {
+	float: left;
+}
+
+.pull-right {
+	float: right;
+}
+
+.full-width {
+	width: 100%;
+}
+
+%clearfix,
+.clearfix {
+  &:after {
+	  content: " ";
+	  display: block;
+	  clear: both;
+  }
+}
+
+%font-smoothing {
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

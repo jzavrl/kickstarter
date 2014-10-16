@@ -1,0 +1,28 @@
+////////////////////////
+// Base Partials
+//
+// These files will be shared across all three of your output CSS files. Generally included here are only Compass Extension imports and imports for variables, functions, mixins, and extendables.
+//
+////////////////////////
+
+
+////////////////////////
+// Extensions
+////////////////////////
+@import 'breakpoint';
+
+////////////////////////
+// Vendor Imports
+////////////////////////
+
+////////////////////////
+// Private Imports
+////////////////////////
+@import 'normalize';
+@import 'grid';
+@import 'variables';
+@import 'functions';
+@import 'mixins';
+@import 'extendables';
+@import 'animations';
+@import 'helpers';

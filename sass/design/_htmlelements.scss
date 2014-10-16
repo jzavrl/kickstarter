@@ -1,0 +1,126 @@
+::selection {
+
+}
+
+::-moz-selection {
+
+}
+
+html {
+	box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+body {
+	@extend %font-smoothing;
+}
+
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+}
+
+a {
+	transition: 0.4s;
+
+	&:visited {
+
+	}
+	&:hover {
+
+	}
+}
+
+h1, h2, h3, h4, h5, h6 {
+
+	a {
+
+
+		&:hover {
+
+		}
+	}
+}
+
+h1 {
+
+}
+
+h2 {
+
+}
+
+h3 {
+
+}
+
+h4 {
+
+}
+
+h5 {
+
+}
+
+h6 {
+
+}
+
+p {
+	margin: 0 0 1rem 0;
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
+
+ul {
+	margin: 0 0 1rem 0;
+	padding: 0;
+
+	li {
+		list-style: disc inside;
+	}
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
+
+ol {
+	margin: 0 0 1rem 0;
+	padding: 0;
+
+	li {
+		list-style: decimal inside;
+	}
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
+
+img {
+	display: block;
+	height: auto;
+	margin: 0 auto;
+	max-width: 100%;
+	transition: 0.4s;
+}
+
+sup {
+
+}
+
+label {
+
+}
+
+fieldset {
+
+}
+
+legend {
+
+}
